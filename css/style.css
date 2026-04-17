@@ -5,16 +5,22 @@
   --h2-font-size: 3rem;
   --h3-font-size: 1.5rem;
   --font-family: "Plus Jakarta Sans", sans-serif;
+  --header-logo-font-size: 1.2rem;
 
   --section-padding: 6rem;
   --container-padding: 1rem;
   --card-padding: 1.5rem;
+  --mobile-menu-padding: 2.5rem;
+  --hire-btn-padding: 1rem 1.25rem;
+  --nav-menu-padding: 0.15rem 3.9rem;
   --gap: 2rem;
   --max-width: 64rem;
-  --mobile-menu-padding: 2.5rem;
-
+  --hire-btn-min-width: 6.625rem;
+  --btn-span-min-width: 12.5rem;
   --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
   --border-radius: 12px;
+  --mobile-header-container-padding: 1.5rem;
+  --desktop-header-container-padding: 0.4rem;
   --nav-bg: #0a0a0acc;
   --nav-filter: blur(12px);
 
@@ -115,8 +121,8 @@ p {
   display: block;
   width: 30px;
   height: 3px;
-  background-color: var(--white-color);
   margin: 0 auto;
+  background-color: var(--white-color);
   transition:
     transform 0.3s ease,
     opacity 0.3s ease;
@@ -140,8 +146,8 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: ce;
-  padding: 1rem;
+  align-items: center;
+  padding: var(--nav-menu-padding);
   background: var(--interactive-color);
   overflow: auto;
   transition:
@@ -152,14 +158,16 @@ p {
 }
 
 .nav-menu a {
-  color: var(--link-color);
-  text-decoration: none;
+  width: 100%;
   padding: var(--mobile-menu-padding) 0;
   border-top: 1px solid var(--border-menu-color);
   text-align: var(--text-center);
   font-size: 1.15rem;
+  color: var(--link-color);
+  text-decoration: none;
 }
 .nav-menu a:last-child {
+  min-width: var(--hire-btn-min-width);
   border-bottom: 1px solid var(--border-menu-color);
 }
 
@@ -174,18 +182,18 @@ p {
 }
 
 .nav-menu .hire-btn span {
-  width: 200px;
-  background: var(--primary-hover);
-  padding: 1rem 1.25rem;
-  border-radius: 1rem;
-  color: var(--second-interactive-color);
+  min-width: var(--btn-span-min-width);
+  padding: var(--hire-btn-padding);
   font-size: 1.15rem;
+  color: var(--second-interactive-color);
+  background: var(--primary-hover);
+  border-radius: 1rem;
   transition: opacity 0.03s ease;
 }
 
 .nav-menu .hire-btn:hover span {
-  opacity: 0.9;
   background: var(--primary-hover);
+  opacity: 0.9;
 }
 
 @media (width >= 64rem) {
@@ -193,15 +201,17 @@ p {
     position: relative;
     flex-direction: row;
     gap: 1rem;
-    background: transparent;
+    padding-inline: 0;
+    padding-block: 1.25rem;
     overflow: hidden;
-    transform: translateX(0);
+    background: transparent;
     opacity: 1;
+    transform: translateX(0);
   }
 
   .nav-menu a {
-    color: var(--link-color);
     padding: 0;
+    color: var(--link-color);
     border: none;
   }
 
@@ -215,6 +225,12 @@ p {
   }
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .nav-menu a {
+    border: 0;
+  }
+}
+
 /* ********** Utilities ********** */
 
 .max-width {
@@ -224,32 +240,32 @@ p {
 /* ********** Site Styles ********** */
 
 .header {
-  display: flex;
-  justify-content: center;
-  background: var(--nav-bg);
   position: sticky;
   top: 0;
+  display: flex;
+  justify-content: center;
   border-top: thin var(--header-border-color) solid;
   border-bottom: thin var(--header-border-color) solid;
+  background: var(--nav-bg);
 }
 
 .header-container {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
+  width: 100%;
+  padding: var(--mobile-header-container-padding);
 }
 
 .logo {
-  color: var(--white-color);
-  text-decoration: none;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: var(--header-logo-font-size);
+  text-decoration: none;
+  color: var(--white-color);
 }
 
 @media (width >= 64rem) {
   .header-container {
-    padding: 0.4rem;
+    padding: var(--desktop-header-container-padding);
   }
 }
