@@ -6,19 +6,22 @@
   --h3-font-size: 1.5rem;
   --font-family: "Plus Jakarta Sans", sans-serif;
   --header-logo-font-size: 1.2rem;
+  --main-title-font-size-mobile: 10vw;
 
   --section-padding: 6rem;
   --container-padding: 1rem;
   --card-padding: 1.5rem;
   --mobile-menu-padding: 2.5rem;
-  --hire-btn-padding: 1rem 1.25rem;
+  --btn-padding: 0.72rem 1.25rem;
   --nav-menu-padding: 0.15rem 3.9rem;
-  --gap: 2rem;
+  --section-mobile-padding: 0 1rem;
+  --section-desktop-padding: 6rem 2rem;
+  --gap: 1rem;
   --max-width: 64rem;
-  --hire-btn-min-width: 6.625rem;
+  --hire-btn-min-width: 7rem;
   --btn-span-min-width: 12.5rem;
   --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
-  --border-radius: 12px;
+  --border-radius: 8px;
   --mobile-header-container-padding: 1.5rem;
   --desktop-header-container-padding: 0.4rem;
   --nav-bg: #0a0a0acc;
@@ -26,10 +29,10 @@
 
   --bg-main: #0a0a0a;
   --surface: #171717;
-  --primary: #6366f1;
-  --primary-hover: #818cf8;
+  --primary: #818cf8;
   --text-primary-color: #ffffff;
-  --text-secondary-color: #a3a3a3;
+  --text-secondary-color: #c7c4d7;
+  --text-tertiary-color: #a3a3a3;
   --header-border-color: #777;
   --link-color: #fff;
   --link-color-alpha: #fff9;
@@ -94,6 +97,10 @@ img {
 
 p {
   line-height: 1.6;
+}
+
+section {
+  padding: var(--section-mobile-padding);
 }
 
 /* ********** Components ********** */
@@ -183,24 +190,20 @@ p {
 
 .nav-menu .hire-btn span {
   min-width: var(--btn-span-min-width);
-  padding: var(--hire-btn-padding);
+  padding: var(--btn-padding);
   font-size: 1.15rem;
+  font-weight: bold;
   color: var(--second-interactive-color);
-  background: var(--primary-hover);
-  border-radius: 1rem;
+  background: var(--primary);
+  border-radius: var(--border-radius);
   transition: opacity 0.03s ease;
-}
-
-.nav-menu .hire-btn:hover span {
-  background: var(--primary-hover);
-  opacity: 0.9;
 }
 
 @media (width >= 64rem) {
   .nav-menu {
     position: relative;
     flex-direction: row;
-    gap: 1rem;
+    gap: var(--gap);
     padding-inline: 0;
     padding-block: 1.25rem;
     overflow: hidden;
@@ -227,8 +230,65 @@ p {
 
 @media (hover: hover) and (pointer: fine) {
   .nav-menu a {
-    border: 0;
+    border: none;
   }
+
+  .nav-menu a:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Hero Section */
+
+.main-title {
+  font-size: var(--main-title-font-size-mobile);
+}
+
+.mark-text {
+  color: var(--primary);
+}
+
+.hero-container {
+  padding-top: 5rem;
+}
+
+.hero-p {
+  color: var(--text-secondary-color);
+}
+
+.hero-btn-container {
+  width: 100%;
+  display: flex;
+  gap: var(--gap);
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.hero-btn-container a {
+  font-weight: bold;
+}
+
+.hero-btn-container .view-work-btn {
+  padding: var(--btn-padding);
+  border-radius: var(--border-radius);
+  color: var(--interactive-color);
+  background: var(--primary);
+}
+
+.hero-btn-container .view-work-btn:hover {
+  cursor: pointer;
+}
+
+.hero-btn-container .get-in-touch-btn {
+  padding: var(--btn-padding);
+  border: 1px solid #ffffff1f;
+  border-radius: var(--border-radius);
+  color: var(--primary);
+  background: transparent;
+}
+
+.hero-btn-container .get-in-touch-btn:hover {
+  cursor: pointer;
 }
 
 /* ********** Utilities ********** */
@@ -237,19 +297,43 @@ p {
   max-width: var(--max-width);
 }
 
+.margin-center {
+  margin: 0 auto;
+}
+
+.min-height {
+  min-height: calc(100vh - var(--mobile-header-container-padding) - 3.5rem);
+}
+
+.text-to-left {
+  text-align: left;
+}
+
 /* ********** Site Styles ********** */
 
 .header {
   position: sticky;
   top: 0;
+  z-index: 998;
   display: flex;
   justify-content: center;
   border-top: thin var(--header-border-color) solid;
   border-bottom: thin var(--header-border-color) solid;
-  background: var(--nav-bg);
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--nav-bg);
+  backdrop-filter: var(--nav-filter);
 }
 
 .header-container {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
