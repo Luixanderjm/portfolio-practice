@@ -2,7 +2,8 @@ const burgerButton = (container, btn, menu) => {
   const d = document,
     $burger = d.querySelector(btn),
     $menu = d.querySelector(menu),
-    $container = d.querySelector(container);
+    $container = d.querySelector(container),
+    $body = document.body;
 
   const active = "active";
 
@@ -16,16 +17,26 @@ const burgerButton = (container, btn, menu) => {
     }
   };
 
+  const handleBodyOverflowY = () => {
+    if ($body.style.overflowY !== "hidden") {
+      $body.style.overflowY = "hidden";
+    } else {
+      $body.style.overflowY = "visible";
+    }
+  };
+
   const activeMenu = (toDo) => {
     if (toDo === "toggle") {
       $menu.classList.toggle(active);
       $burger.classList.toggle(active);
+      handleBodyOverflowY();
     } else if (toDo === "remove") {
       $menu.classList.remove(active);
       $burger.classList.remove(active);
     } else if (toDo === undefined && $menu.classList.contains(active) && $burger.classList.contains(active)) {
       $menu.classList.remove(active);
       $burger.classList.remove(active);
+      handleBodyOverflowY();
     }
 
     accessibility(active);
