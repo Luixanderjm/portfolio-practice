@@ -12,7 +12,7 @@
   --container-padding: 1rem;
   --card-padding: 1.5rem;
   --mobile-menu-padding: 2.5rem;
-  --btn-padding: 0.72rem 1.25rem;
+  --btn-padding: 1rem 1.25rem;
   --nav-menu-padding: 0.15rem 3.9rem;
   --section-mobile-padding: 0 1rem;
   --section-desktop-padding: 6rem 2rem;
@@ -259,7 +259,6 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  pointer-events: none;
   z-index: 0;
 
   background-image:
@@ -267,6 +266,7 @@ section {
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
 
   background-size: 36px 36px;
+  pointer-events: none;
 }
 
 .hero-container {
@@ -276,16 +276,22 @@ section {
 
 .hero-p {
   color: var(--text-secondary-color);
-  width: 80%;
+  width: 100%;
   margin-block: 1.5rem;
 }
 
 .hero-btn-container {
-  width: 100%;
   display: flex;
-  gap: var(--gap);
+  flex-direction: column;
   justify-content: flex-start;
+  gap: var(--gap);
   align-items: center;
+  width: 100%;
+}
+
+.hero-btn-container a {
+  min-width: 99%;
+  text-align: center;
 }
 
 .hero-btn-container a {
@@ -324,6 +330,7 @@ section {
     width: 70%;
   }
 }
+
 @media (width >= 64rem) {
   .main-title {
     width: 77%;
@@ -331,6 +338,19 @@ section {
 
   .hero-p {
     width: 50%;
+  }
+}
+
+@media (width >= 30rem) {
+  .hero-btn-container {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .hero-btn-container a {
+    min-width: 20%;
+    text-align: center;
   }
 }
 
@@ -369,9 +389,9 @@ section {
   position: absolute;
   inset: 0;
   z-index: 0;
-  pointer-events: none;
   background-color: var(--nav-bg);
   backdrop-filter: var(--nav-filter);
+  pointer-events: none;
 }
 
 .header-container {
