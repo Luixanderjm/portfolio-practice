@@ -369,7 +369,8 @@ section {
 }
 
 .min-height {
-  min-height: calc(100vh - var(--mobile-header-container-padding) - 3rem);
+  /* min-height: calc(100vh - var(--mobile-header-container-padding) - 3rem); */
+  min-height: 100vh;
 }
 
 .text-to-left {

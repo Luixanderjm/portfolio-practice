@@ -7,6 +7,8 @@ const burgerButton = (container, btn, menu) => {
 
   const active = "active";
 
+  let isDesktop = false;
+
   const accessibility = (v) => {
     if ($menu.classList.contains(v)) {
       $burger.setAttribute("aria-expanded", "true");
@@ -30,9 +32,10 @@ const burgerButton = (container, btn, menu) => {
       $menu.classList.toggle(active);
       $burger.classList.toggle(active);
       handleBodyOverflowY();
-    } else if (toDo === "remove") {
+    } else if (toDo === "remove" && !isDesktop) {
       $menu.classList.remove(active);
       $burger.classList.remove(active);
+      handleBodyOverflowY();
     } else if (toDo === undefined && $menu.classList.contains(active) && $burger.classList.contains(active)) {
       $menu.classList.remove(active);
       $burger.classList.remove(active);
@@ -58,6 +61,9 @@ const burgerButton = (container, btn, menu) => {
   function handleBreakpoint(e) {
     if (e.matches) {
       activeMenu();
+      isDesktop = true;
+    } else {
+      isDesktop = false;
     }
   }
 
