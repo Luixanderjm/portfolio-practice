@@ -13,6 +13,7 @@
   --card-padding: 1.5rem;
   --mobile-menu-padding: 2.5rem;
   --btn-padding: 1rem 1.25rem;
+  --btn-hire-padding: 0.75rem 1.25rem;
   --nav-menu-padding: 0.15rem 3.9rem;
   --section-mobile-padding: 0 1rem;
   --section-desktop-padding: 6rem 2rem;
@@ -196,7 +197,7 @@ section {
 
 .nav-menu .hire-btn span {
   min-width: var(--btn-span-min-width);
-  padding: var(--btn-padding);
+  padding: var(--btn-hire-padding);
   font-size: 1.15rem;
   font-weight: bold;
   color: var(--second-interactive-color);
@@ -276,6 +277,7 @@ section {
 .hero-container {
   z-index: 1;
   padding-top: 5.4rem;
+  padding-bottom: 5.4rem;
 }
 
 .hero-p {
@@ -338,6 +340,7 @@ section {
 @media (width >= 64rem) {
   .hero-container {
     min-height: 100vh;
+    padding-bottom: 0;
   }
   .main-title {
     width: 77%;
@@ -372,7 +375,6 @@ section {
 }
 
 .min-height {
-  /* min-height: calc(100vh - var(--mobile-header-container-padding) - 3rem); */
   min-height: 100vh;
 }
 
@@ -477,6 +479,7 @@ section {
   align-items: center;
   gap: 2rem;
   padding-top: 8.5rem;
+  padding-bottom: 4.25rem;
 }
 
 .about-img {
@@ -485,6 +488,12 @@ section {
   height: auto;
   object-fit: cover;
   object-position: 50% 1rem;
+  filter: grayscale(1);
+  transition: filter 0.3s ease;
+}
+
+.about-img:hover {
+  filter: grayscale(0);
 }
 
 .about-info-container .about-title {
@@ -500,23 +509,32 @@ section {
 @media (width >= 48rem) {
   .about-container {
     flex-direction: row;
-    gap: 3.2rem;
+    gap: 3.3rem;
   }
 
   .about-info-container .about-title {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
   .about-img {
-    width: 40%;
+    width: 35%;
   }
 
   .about-info-container {
     display: flex;
     flex-direction: column;
+    max-width: 100%;
+    gap: 1rem;
   }
 
   .about-info-container p {
+    max-width: 65ch;
     margin-top: 0;
-    line-height: 1.6;
+  }
+}
+
+@media (width >= 64rem) {
+  .about-container {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
