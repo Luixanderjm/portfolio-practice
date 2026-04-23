@@ -7,6 +7,7 @@
   --font-family: "Plus Jakarta Sans", sans-serif;
   --header-logo-font-size: 1.2rem;
   --main-title-font-size-mobile: 11.5vw;
+  --section-title-font-size: clamp(2rem, 6vw, 2.9rem);
 
   --section-padding: 6rem;
   --container-padding: 1rem;
@@ -19,6 +20,7 @@
   --section-desktop-padding: 6rem 2rem;
   --gap: 1rem;
   --max-width: 64rem;
+  --min-height: 100vh;
   --hire-btn-min-width: 7rem;
   --btn-span-min-width: 12.5rem;
   --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
@@ -30,12 +32,10 @@
 
   --bg-main: #0a0a0a;
   --surface: #171717;
-  --primary: #818cf8;
-  --text-primary-color: #ffffff;
+  --primary: #c0c1ff;
   --text-secondary-color: #c7c4d7;
   --text-tertiary-color: #a3a3a3;
   --header-border-color: #777;
-  --link-color: #fff;
   --link-color-alpha: #fff9;
   --link-bg-color-hover: #60a5fa;
   --white-color: #ffffff;
@@ -43,6 +43,7 @@
   --second-interactive-color: #0f172a;
   --border-menu-color: #1e3a5f;
   --text-center: center;
+  --main-gradient: linear-gradient(to bottom, #9fa2ff, #868af7);
 }
 
 /* ********** Reset ********** */
@@ -65,8 +66,8 @@ body {
   flex-direction: column;
   margin: 0;
   overflow-x: hidden;
-  min-height: 100vh;
-  color: var(--text-primary-color);
+  min-height: var(--min-height);
+  color: var(--white-color);
   background: var(--bg-main);
 }
 
@@ -75,7 +76,7 @@ main {
 }
 
 a {
-  color: var(--link-color);
+  color: var(--white-color);
   text-decoration: none;
   transition: all 0.5s ease-out;
 }
@@ -110,6 +111,13 @@ p {
 
 section {
   padding: var(--section-mobile-padding);
+  scroll-margin-top: 5.5rem;
+}
+
+@media (width >= 64rem) {
+  section {
+    scroll-margin-top: 0;
+  }
 }
 
 /* ********** Components ********** */
@@ -177,7 +185,7 @@ section {
   border-top: 1px solid var(--border-menu-color);
   text-align: var(--text-center);
   font-size: 1.15rem;
-  color: var(--link-color);
+  color: var(--white-color);
   text-decoration: none;
 }
 .nav-menu a:last-child {
@@ -201,7 +209,7 @@ section {
   font-size: 1.15rem;
   font-weight: bold;
   color: var(--second-interactive-color);
-  background: var(--primary);
+  background: var(--main-gradient);
   border-radius: var(--border-radius);
   transition: opacity 0.03s ease;
 }
@@ -220,7 +228,7 @@ section {
 
   .nav-menu a {
     padding: 0;
-    color: var(--link-color);
+    color: var(--white-color);
     border: none;
   }
 
@@ -339,7 +347,7 @@ section {
 
 @media (width >= 64rem) {
   .hero-container {
-    min-height: 100vh;
+    min-height: var(--min-height);
     padding-bottom: 0;
   }
   .main-title {
@@ -375,7 +383,7 @@ section {
 }
 
 .min-height {
-  min-height: 100vh;
+  min-height: var(--min-height);
 }
 
 .text-to-left {
@@ -478,8 +486,8 @@ section {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  padding-top: 8.5rem;
-  padding-bottom: 4.25rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 
 .about-img {
@@ -498,7 +506,7 @@ section {
 
 .about-info-container .about-title {
   width: 90%;
-  font-size: clamp(2rem, 6vw, 2.9rem);
+  font-size: var(--section-title-font-size);
 }
 
 .about-info-container p {
@@ -534,7 +542,64 @@ section {
 
 @media (width >= 64rem) {
   .about-container {
+    min-height: 100vh;
     padding-top: 0;
     padding-bottom: 0;
   }
+}
+
+.skills-container {
+  padding-top: 8.5rem;
+  padding-bottom: 5.4rem;
+}
+
+.skills-container span {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.skills-container h2 {
+  font-size: var(--section-title-font-size);
+  margin: 1.5rem 0 2.6rem 0;
+}
+
+.skill-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+  gap: 0.75rem;
+}
+
+.skill-cards-container .skill-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.1rem;
+  padding: 2.3rem 1.8rem;
+  background: var(--surface);
+  font-size: 0.75rem;
+  outline: thin solid transparent;
+  border-radius: var(--border-radius);
+  transition: outline 0.3s ease;
+}
+
+.skill-cards-container .skill-card:hover {
+  outline-color: rgba(160, 168, 255, 0.3);
+}
+
+.skill-cards-container h3 {
+  font-size: 1.25rem;
+}
+
+.skill-cards-container p {
+  margin-top: -0.85rem;
+  color: var(--text-secondary-color);
+}
+
+.skill-cards-container span i {
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.skill-cards-container .skill-card:hover span i {
+  transform: scale(1.1);
 }
