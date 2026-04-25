@@ -25,7 +25,7 @@
   --btn-span-min-width: 12.5rem;
   --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
   --border-radius: 8px;
-  --mobile-header-container-padding: 1.5rem;
+  --mobile-header-container-padding: 1rem;
   --desktop-header-container-padding: 0.4rem;
   --nav-bg: #0a0a0acc;
   --nav-filter: blur(12px);
@@ -35,7 +35,7 @@
   --primary: #c0c1ff;
   --text-secondary-color: #c7c4d7;
   --text-tertiary-color: #a3a3a3;
-  --header-border-color: #777;
+  --header-border-color: rgba(255, 255, 255, 0.08);
   --link-color-alpha: #fff9;
   --link-bg-color-hover: #60a5fa;
   --white-color: #ffffff;
@@ -111,7 +111,7 @@ p {
 
 section {
   padding: var(--section-mobile-padding);
-  scroll-margin-top: 5.5rem;
+  scroll-margin-top: 2.5rem;
 }
 
 @media (width >= 64rem) {
@@ -406,8 +406,11 @@ section {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-color: var(--nav-bg);
+  /* background-color: var(--nav-bg); */
   backdrop-filter: var(--nav-filter);
+  background:
+    radial-gradient(ellipse at 38% 35%, rgba(110, 125, 70, 0.05), rgba(30, 75, 80, 0.04) 36%, transparent 58%),
+    rgba(8, 9, 10, 0.75);
   pointer-events: none;
 }
 
@@ -613,4 +616,29 @@ section {
     padding-bottom: 0;
     min-height: var(--min-height);
   }
+}
+
+.projects-section {
+  background: var(--surface);
+}
+
+.projects-container {
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+}
+
+.projects-container .content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.cards-container img {
+  border-radius: 18px;
 }
