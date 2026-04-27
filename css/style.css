@@ -25,6 +25,7 @@
   --btn-span-min-width: 12.5rem;
   --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
   --border-radius: 8px;
+  --card-border-radius: 12px;
   --mobile-header-container-padding: 1rem;
   --desktop-header-container-padding: 0.4rem;
   --nav-bg: #0a0a0acc;
@@ -635,7 +636,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 6rem;
+  margin-bottom: 5.05rem;
 }
 
 .projects-container .content span {
@@ -658,7 +659,13 @@ section {
 }
 
 .cards-container img {
+  width: 100%;
   border-radius: 12px;
+  transition: transform 0.6s ease;
+}
+
+.cards-container .card:hover img {
+  transform: scale(1.06);
 }
 
 .cards-container .tech-list {
@@ -683,15 +690,18 @@ section {
 
 .cards-container .card .img-container {
   position: relative;
+  overflow: hidden;
+  border-radius: var(--card-border-radius);
 }
 
 .cards-container .card .links-container {
   position: absolute;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  inset: 0;
+  border-radius: var(--card-border-radius);
   background: #0009;
   opacity: 0;
   visibility: hidden;
@@ -700,9 +710,9 @@ section {
 }
 
 .cards-container .card:hover .links-container {
-  opacity: 1;
   visibility: visible;
   pointer-events: all;
+  opacity: 1;
 }
 
 .cards-container .card .links-container a {
