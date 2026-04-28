@@ -494,6 +494,12 @@ section {
   padding-bottom: 5.5rem;
 }
 
+.about-container span {
+  color: var(--primary);
+  font-weight: bold;
+  align-self: flex-start;
+}
+
 .about-img {
   width: 100%;
   max-width: 30rem;
@@ -518,6 +524,11 @@ section {
   color: var(--text-secondary-color);
 }
 
+.about-info-container span {
+  display: inline-block;
+  margin-bottom: 0.95rem;
+}
+
 @media (width >= 48rem) {
   .about-container {
     flex-direction: row;
@@ -540,6 +551,10 @@ section {
   .about-info-container p {
     max-width: 65ch;
     margin-top: 0;
+  }
+
+  .about-info-container span {
+    margin-bottom: 0;
   }
 }
 
@@ -654,14 +669,14 @@ section {
 
 .cards-container {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 3rem;
 }
 
 .cards-container img {
   width: 100%;
   border-radius: 12px;
-  transition: transform 0.6s ease;
+  transition: transform 0.7s ease;
 }
 
 .cards-container .card:hover img {
@@ -736,4 +751,18 @@ section {
 .cards-container .card .links-container a:last-child {
   background: #00000098;
   color: #fff;
+}
+
+@media (width >= 64rem) {
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  }
+  .projects-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    min-height: 100vh;
+  }
 }
