@@ -215,11 +215,34 @@
           </div>
           <form id="contact-form" class="contact-form">
             <label for="name">YOUR NAME</label>
-            <input type="text" id="name" name="name" placeholder="Jack White" pattern="" required />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Jack White"
+              pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$"
+              title="Please enter a valid name"
+              required
+            />
             <label for="email">EMAIL ADDRESS</label>
-            <input type="email" id="email" name="email" placeholder="jack@example.com" pattern="" required />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="jack@example.com"
+              pattern="^[a-z0-9]+(\.[a-z0-9_]+)*@[a-z0-9\-]+(\.[a-z0-9\-]+)*\.[a-z]{2,15}$"
+              title="Please enter a valid email"
+              required
+            />
             <label for="details">PROJECT DETAILS</label>
-            <textarea id="details" name="details" placeholder="Tell me about your project..."></textarea>
+            <textarea
+              id="details"
+              name="details"
+              minlength="10"
+              maxlength="1000"
+              placeholder="Tell me about your project..."
+              required
+            ></textarea>
             <button type="submit">Send Message</button>
           </form>
         </div>

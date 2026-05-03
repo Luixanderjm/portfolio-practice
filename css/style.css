@@ -45,6 +45,7 @@
   --interactive-color: #111827;
   --second-interactive-color: #0f172a;
   --border-menu-color: #1e3a5f;
+  --invalid-color: #f00;
   --text-center: center;
   --main-gradient: linear-gradient(to bottom, #9fa2ff, #868af7);
   --placeholder-bg-color: #353534;
@@ -414,11 +415,16 @@ section {
 .contact-form textarea {
   padding: 1.3rem 1rem;
   border-radius: 5px;
-  font-family: var(--font-family);
   border: none;
+  font-family: var(--font-family);
+  font-size: 1rem;
   background: var(--placeholder-bg-color);
   color: var(--white-color);
   transition: outline 0.3s ease;
+}
+
+.contact-form input:invalid:not(:placeholder-shown) {
+  outline-color: red;
 }
 
 .contact-form textarea {
@@ -470,6 +476,28 @@ section {
   outline-offset: 4px;
 }
 
+.contact-form span {
+  margin-top: -1.85rem;
+  color: var(--invalid-color);
+  pointer-events: none;
+}
+
+@keyframes opacity-animation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.contact-form span.active {
+  display: block;
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+  animation: opacity-animation 0.3s ease 1 both;
+}
+
 /* ********** Utilities ********** */
 
 .max-width {
@@ -491,6 +519,10 @@ section {
 .default-container-padding {
   padding-top: 5.5rem;
   padding-bottom: 5.5rem;
+}
+
+.none {
+  display: none;
 }
 
 /* ********** Site Styles ********** */
