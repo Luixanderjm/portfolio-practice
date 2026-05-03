@@ -15,7 +15,7 @@
   --mobile-menu-padding: 2.5rem;
   --btn-padding: 1rem 1.25rem;
   --btn-hire-padding: 0.75rem 1.25rem;
-  --nav-menu-padding: 0.15rem 3.9rem;
+  --nav-menu-padding: 0.15rem 0;
   --section-mobile-padding: 0 1.5rem;
   --section-medium-padding: 0 2.5rem;
   --section-desktop-padding: 6rem 2rem;
@@ -44,7 +44,7 @@
   --white-color: #ffffff;
   --interactive-color: #111827;
   --second-interactive-color: #0f172a;
-  --border-menu-color: #1e3a5f;
+  --border-menu-color: #60a5fa40;
   --invalid-color: #f00;
   --text-center: center;
   --main-gradient: linear-gradient(to bottom, #9fa2ff, #868af7);
@@ -185,8 +185,8 @@ section {
   overflow: hidden;
   background: var(--interactive-color);
   transition:
-    transform 0.3s ease-in,
-    opacity 0.3s ease-in;
+    transform 0.3s ease-out,
+    opacity 0.3s ease-out;
   transform: translateX(-100%);
   opacity: 0;
 }
@@ -241,7 +241,6 @@ section {
   .nav-menu a {
     padding: 0;
     color: var(--white-color);
-    border: none;
   }
 
   .nav-menu a:hover {
@@ -251,16 +250,6 @@ section {
 
   .menu-toggle {
     display: none;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .nav-menu a {
-    border: none;
-  }
-
-  .nav-menu a:last-child {
-    border-bottom: none;
   }
 }
 
@@ -482,6 +471,27 @@ section {
   pointer-events: none;
 }
 
+.contact-form-loader {
+  align-self: center;
+  text-align: center;
+}
+
+.contact-form-loader img {
+  width: 3.5rem;
+}
+
+.contact-form-response {
+  align-self: center;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #8b8cf6;
+}
+
+.contact-form-response p {
+  margin: 0;
+}
+
 @keyframes opacity-animation {
   0% {
     opacity: 0;
@@ -494,7 +504,6 @@ section {
 
 .contact-form span.active {
   display: block;
-  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
   animation: opacity-animation 0.3s ease 1 both;
 }
 

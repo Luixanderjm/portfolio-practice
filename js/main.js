@@ -3,5 +3,5 @@ import contactForm from "./contact-form.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   burgerButton(".header-container", ".menu-toggle", ".nav-menu");
-  contactForm("contact-form");
+  contactForm("contact-form", ".contact-form-loader", ".contact-form-response p");
 });
