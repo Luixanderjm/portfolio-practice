@@ -349,7 +349,7 @@ section {
 @media (width >= 64rem) {
   .hero-container {
     min-height: var(--min-height);
-    padding-top: 6.5rem;
+    padding-top: clamp(3rem, 8vh, 6rem);
     padding-bottom: 0;
   }
   .main-title {
@@ -623,7 +623,8 @@ section {
 }
 
 .about-section {
-  padding: 0 1.5rem;
+  /* padding: 0 1.5rem; */
+  padding-block: clamp(4rem, 8vw, 7rem);
   background: var(--surface);
 }
 
@@ -643,7 +644,7 @@ section {
 
 .about-img {
   width: 100%;
-  max-width: 30rem;
+  max-width: clamp(420px, 35vw, 620px);
   height: auto;
   object-fit: cover;
   object-position: 50% 1rem;
