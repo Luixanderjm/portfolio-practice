@@ -19,27 +19,27 @@ const burgerButton = (container, btn, menu) => {
     }
   };
 
-  const handleBodyOverflowY = () => {
-    if ($body.style.overflowY !== "hidden") {
+  const handleBodyOverflowY = (state) => {
+    if (state === active) {
       $body.style.overflowY = "hidden";
-    } else {
+    } else if (state === "hiddenState") {
       $body.style.overflowY = "visible";
     }
   };
 
-  const activeMenu = (toDo) => {
-    if (toDo === "toggle") {
+  const handleMenuState = (toDo) => {
+    if (toDo === "toggleMenu") {
       $menu.classList.toggle(active);
       $burger.classList.toggle(active);
-      handleBodyOverflowY();
-    } else if (toDo === "remove" && !isDesktop) {
+      !$menu.classList.contains(active) ? handleBodyOverflowY("hiddenState") : handleBodyOverflowY(active);
+    } else if (toDo === "hideMenu" && !isDesktop) {
       $menu.classList.remove(active);
       $burger.classList.remove(active);
-      handleBodyOverflowY();
-    } else if (toDo === undefined && $menu.classList.contains(active) && $burger.classList.contains(active)) {
+      handleBodyOverflowY("hiddenState");
+    } else if (toDo === "closeOnDesktop" && $menu.classList.contains(active)) {
       $menu.classList.remove(active);
       $burger.classList.remove(active);
-      handleBodyOverflowY();
+      handleBodyOverflowY("hiddenState");
     }
 
     accessibility(active);
@@ -51,16 +51,16 @@ const burgerButton = (container, btn, menu) => {
 
     if (!btnClick && !menuClick) return;
 
-    if (btnClick) activeMenu("toggle");
+    if (btnClick) handleMenuState("toggleMenu");
 
-    if (menuClick) activeMenu("remove");
+    if (menuClick) handleMenuState("hideMenu");
   });
 
   const mediaQuery = window.matchMedia("(min-width: 1024px)");
 
   function handleBreakpoint(e) {
     if (e.matches) {
-      activeMenu();
+      handleMenuState("closeOnDesktop");
       isDesktop = true;
     } else {
       isDesktop = false;

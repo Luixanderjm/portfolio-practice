@@ -18,9 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $message = $_POST["details"] ?? "";
   $subject = "New message from Luixander Mejias Portfolio";
 
-  $body = "Name: $name\r\n";
-  $body .= "Email: $email\r\n";
-  $body .= "Message: $message\r\n";
+  $body = "Name:\r\n$name\r\n";
+  $body .= "Email:\r\n$email\r\n";
+  $body .= "Message:\r\n$message\r\n";
 
 
   if (empty(trim($name)) || empty(trim($email)) || empty(trim($message))) {

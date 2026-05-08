@@ -12,10 +12,6 @@ const contactForm = (form, loader, response) => {
     input.insertAdjacentElement("afterend", $span);
   };
 
-  /* $inputs.forEach((input) => {
-    generateValidationMessages(input);
-  }); */
-
   $inputs.forEach((input) => generateValidationMessages(input));
 
   const inputValidation = (e) => {
@@ -36,7 +32,8 @@ const contactForm = (form, loader, response) => {
     }
   };
 
-  const sendEmail = async () => {
+  const sendEmail = async (e) => {
+    e.preventDefault();
     try {
       const formData = new FormData($form);
 
@@ -57,12 +54,14 @@ const contactForm = (form, loader, response) => {
       if (!data.success) throw { message: data.message };
 
       $response.textContent = data.message;
-    } catch (err) {
-      let message2 = `Error: ${err.status}: ${err.statusText}`;
-      $response.textContent = err.message || message2;
-    } finally {
-      $form.reset();
 
+      $form.reset();
+    } catch (err) {
+      const fallbackMessage = err.status
+        ? `Error: ${err.status}: ${err.statusText}`
+        : "Something went wrong. Please try again.";
+      $response.textContent = err.message || fallbackMessage;
+    } finally {
       $loader.classList.add("none");
       $response.parentElement.classList.remove("none");
       setTimeout(() => {
@@ -73,10 +72,7 @@ const contactForm = (form, loader, response) => {
   };
 
   $form.addEventListener("input", inputValidation);
-  $form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    sendEmail();
-  });
+  $form.addEventListener("submit", sendEmail);
 };
 
 export default contactForm;
