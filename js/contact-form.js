@@ -40,6 +40,7 @@ const contactForm = (form, loader, response) => {
       const settings = {
         method: "POST",
         body: formData,
+        mode: "cors",
       };
 
       $loader.classList.remove("none");
@@ -56,7 +57,10 @@ const contactForm = (form, loader, response) => {
 
       $form.reset();
     } catch (err) {
-      $response.textContent = "Message could not be sent. Please try again later.";
+      const fallbackMessage = err.status
+        ? `Error: ${err.status}: ${err.statusText}`
+        : "Something went wrong. Please try again.";
+      $response.textContent = err.message || fallbackMessage;
     } finally {
       $loader.classList.add("none");
       $response.parentElement.classList.remove("none");
