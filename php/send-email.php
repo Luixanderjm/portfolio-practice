@@ -2,28 +2,22 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'PHPMailer-master/src/Exception.php';
-require 'PHPMailer-master/src/PHPMailer.php';
-require 'PHPMailer-master/src/SMTP.php';
+require __DIR__ . '/PHPMailer-master/src/Exception.php';
+require __DIR__ . '/PHPMailer-master/src/PHPMailer.php';
+require __DIR__ . '/PHPMailer-master/src/SMTP.php';
 
+$config = require __DIR__ . "/../../config/mail-config.phpa";
 
 header("Content-Type: application/json");
 
-header("Access-Control-Allow-Origin: *");
-
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  $name = $_POST["name"] ?? "";
-  $email = $_POST["email"] ?? "";
-  $message = $_POST["details"] ?? "";
+
+  $name = trim($_POST["name"] ?? "");
+  $email = trim($_POST["email"] ?? "");
+  $message = trim($_POST["details"] ?? "");
   $subject = "New message from Luixander Mejias Portfolio";
 
-  $body = "Name:\r\n$name\r\n";
-  $body .= "Email:\r\n$email\r\n";
-  $body .= "Message:\r\n$message\r\n";
-
-
-  if (empty(trim($name)) || empty(trim($email)) || empty(trim($message))) {
+  if (empty($name) || empty($email) || empty($message)) {
     echo json_encode([
       "success" => false,
       "message" => "All fields are required"
@@ -31,14 +25,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     exit;
   }
 
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo json_encode([
+      "success" => false,
+      "message" => "Please enter a valid email address."
+    ]);
+    exit;
+  }
+
+  $body = "Name: $name\r\n";
+  $body .= "Email: $email\r\n\r\n";
+  $body .= "Message:\r\n$message\r\n";
+
   $mail = new PHPMailer(true);
 
   try {
     $mail->isSMTP();
     $mail->Host = 'smtp.dondominio.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'luixdev@luixandermejias.com';
-    $mail->Password = 'dkcemlO6rd-;qc';
+    $mail->Username = $config["smtp_user"];
+    $mail->Password = $config["smtp_pass"];
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
@@ -57,11 +63,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     ]);
 
   } catch (Exception $e) {
+    http_response_code(500);
+
     echo json_encode([
       "success" => false,
       "message" => "Message could not be sent.",
-      "error" => $mail->ErrorInfo
     ]);
   }
 
+  exit;
 }
+
+http_response_code(405);
+echo json_encode([
+  "success" => false,
+  "message" => "Method not allowed"
+]);
+exit;

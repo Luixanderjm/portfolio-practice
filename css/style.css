@@ -682,7 +682,7 @@ section {
 
 @media (width >= 64rem) {
   .about-section {
-    padding-top: 1rem;
+    padding-block: 0;
   }
   .about-container {
     min-height: 100vh;
