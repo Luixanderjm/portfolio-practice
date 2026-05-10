@@ -6,7 +6,7 @@ require __DIR__ . '/PHPMailer-master/src/Exception.php';
 require __DIR__ . '/PHPMailer-master/src/PHPMailer.php';
 require __DIR__ . '/PHPMailer-master/src/SMTP.php';
 
-$config = require __DIR__ . "/../../config/mail-config.phpa";
+$config = require __DIR__ . "/../../config/mail-config.php";
 
 header("Content-Type: application/json");
 
@@ -48,8 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
-    $mail->setFrom('luixdev@luixandermejias.com', 'Portfolio Contact Form');
-    $mail->addAddress('luixander08@gmail.com');
+    $mail->setFrom($config["from_email"], 'Portfolio Contact Form');
+    $mail->addAddress($config["to_email"]);
     $mail->addReplyTo($email, $name);
     $mail->isHTML(false);
     $mail->Subject = $subject;
