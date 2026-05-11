@@ -65,6 +65,7 @@ body {
   min-height: var(--container-min-height);
   color: var(--color-white);
   background: var(--color-bg-main);
+  background: #fff;
 }
 
 main {
