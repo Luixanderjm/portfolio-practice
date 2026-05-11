@@ -42,6 +42,10 @@
   --gradient-primary: linear-gradient(to bottom, #9fa2ff, #868af7);
 }
 
+:root.light-theme .theme-toggle-circle {
+  transform: translate(24px, -50%);
+}
+
 /* ********** Reset ********** */
 
 html {
@@ -65,7 +69,6 @@ body {
   min-height: var(--container-min-height);
   color: var(--color-white);
   background: var(--color-bg-main);
-  background: #fff;
 }
 
 main {
@@ -211,6 +214,40 @@ section {
   transition: opacity 0.03s ease;
 }
 
+.theme-control {
+  position: absolute;
+  bottom: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+}
+
+.theme-toggle {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(180, 190, 255, 0.25);
+  border-radius: 999px;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.theme-toggle-circle {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #a7a8ff;
+  transform: translateY(-50%);
+  transition: transform 0.25s ease;
+}
+
 @media (width >= 64rem) {
   .nav-menu {
     position: relative;
@@ -234,6 +271,17 @@ section {
   }
 
   .menu-toggle {
+    display: none;
+  }
+
+  .theme-control {
+    position: static;
+    align-items: flex-end;
+    gap: 0;
+    padding: 0.5rem;
+  }
+
+  .theme-control > span {
     display: none;
   }
 }
