@@ -37,8 +37,10 @@
   --color-link-alpha: #fff9;
   --color-link-bg-hover: #60a5fa;
   --color-nav-link: var(--color-white);
+  --color-nav-link-desktop: #f8fafc;
   --color-white: #ffffff;
   --color-interactive: #111827;
+  --color-nav-bg: var(--color-interactive);
   --color-interactive-secondary: #0f172a;
   --color-btn-primary-bg: var(--color-primary);
   --color-btn-primary-text: var(--color-interactive);
@@ -55,17 +57,17 @@
     radial-gradient(ellipse at 38% 35%, rgba(110, 125, 70, 0.05), rgba(30, 75, 80, 0.04) 36%, transparent 58%),
     rgba(8, 9, 10, 0.75);
   --color-theme-switch-track-bg: rgba(255, 255, 255, 0.16);
+  --color-theme-switch-track-border: rgba(255, 255, 255, 0.28);
   --color-theme-switch-thumb-bg: #c7d2fe;
-}
-
-:root.light-theme .theme-toggle-circle {
-  transform: translate(24px, -50%);
+  --color-theme-control-text: var(--color-nav-link);
+  --color-burger-header: var(--color-white);
+  --color-burger-menu: #0f172a;
+  --color-section-label: var(--color-primary);
 }
 
 :root.light-theme {
   --header-overlay-bg: linear-gradient(to right, rgba(30, 41, 59, 0.96), rgba(67, 56, 202, 0.9));
   --border-divider: thin solid rgba(255, 255, 255, 0.14);
-  --color-nav-link: #f8fafc;
   --color-hire-btn-bg: #a5b4fc;
   --color-hire-btn: #111827;
   --color-bg-main: #f8fafc;
@@ -77,11 +79,23 @@
   --color-btn-primary-text: #0f172a;
   --color-btn-secondary-text: #4f46e5;
   --color-btn-secondary-border: rgba(79, 70, 229, 0.35);
+  --color-nav-bg: #f3f4ff;
+  --color-nav-link: #0f172a;
+  --color-menu-border: rgba(15, 23, 42, 0.09);
+  --color-link-bg-hover: rgba(129, 134, 248, 0.06);
+  --color-theme-control-text: #0f172a;
+  --color-theme-switch-track-bg: rgba(15, 23, 42, 0.08);
+  --color-theme-switch-track-border: rgba(15, 23, 42, 0.28);
+  --color-theme-switch-thumb-bg: #8186f8;
+  --color-section-label: #5b5fcf;
 }
 
-:root.light-theme .header {
-  backdrop-filter: none;
-  background: #000;
+:root.light-theme .theme-toggle-circle {
+  transform: translate(24px, -50%);
+}
+
+:root.light-theme .menu-toggle.active span {
+  background-color: var(--color-burger-menu);
 }
 
 /* ********** Reset ********** */
@@ -158,6 +172,23 @@ section {
   }
 }
 
+/* ********** Reusable section styles ********** */
+
+.section-title {
+  font-size: var(--font-size-section-title);
+  color: var(--color-text-primary);
+}
+
+.section-text {
+  color: var(--color-paragraph-text);
+  font-size: 1rem;
+}
+
+.section-text-label {
+  color: var(--color-section-label);
+  font-weight: bold;
+}
+
 /* ********** Components ********** */
 
 /* Menu */
@@ -181,7 +212,7 @@ section {
   width: 30px;
   height: 3px;
   margin: 0 auto;
-  background-color: var(--color-white);
+  background-color: var(--color-burger-header);
   transition:
     transform 0.3s ease,
     opacity 0.3s ease;
@@ -209,7 +240,7 @@ section {
   align-items: center;
   padding: var(--padding-menu-nav);
   overflow: hidden;
-  background: var(--color-interactive);
+  background: var(--color-nav-bg);
   transition:
     transform 0.3s ease-out,
     opacity 0.3s ease-out;
@@ -260,6 +291,7 @@ section {
   gap: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 999px;
+  color: var(--color-theme-control-text);
 }
 
 .theme-toggle {
@@ -267,7 +299,7 @@ section {
   width: 52px;
   height: 28px;
   background: var(--color-theme-switch-track-bg);
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid var(--color-theme-switch-track-border);
   border-radius: 999px;
   padding: 0;
   background: transparent;
@@ -300,6 +332,7 @@ section {
 
   .nav-menu a {
     padding: 0;
+    color: var(--color-nav-link-desktop);
   }
 
   .nav-menu a:hover {
@@ -702,8 +735,6 @@ section {
 }
 
 .about-container span {
-  color: var(--color-primary);
-  font-weight: bold;
   align-self: flex-start;
 }
 
@@ -723,12 +754,10 @@ section {
 
 .about-info-container .about-title {
   width: 90%;
-  font-size: var(--font-size-section-title);
 }
 
 .about-info-container p {
   max-width: 95%;
-  color: var(--color-text-secondary);
 }
 
 .about-info-container span {
@@ -774,13 +803,7 @@ section {
   }
 }
 
-.skills-container span {
-  color: var(--color-primary);
-  font-weight: bold;
-}
-
 .skills-container h2 {
-  font-size: var(--font-size-section-title);
   margin: 1.5rem 0 2.6rem 0;
 }
 
@@ -848,19 +871,6 @@ section {
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 3rem;
-}
-
-.projects-container .content span {
-  color: var(--color-primary);
-  font-weight: bold;
-}
-
-.projects-container .content p {
-  color: var(--color-text-secondary);
-}
-
-.projects-container .content h2 {
-  font-size: var(--font-size-section-title);
 }
 
 .cards-container {
@@ -977,21 +987,8 @@ section {
   padding-bottom: 6rem;
 }
 
-.contact-container .contact-info-container span {
-  color: var(--color-primary);
-}
-
 .contact-container .contact-info-container span:first-child {
   margin-bottom: -0.3rem;
-  font-weight: bold;
-}
-
-.contact-container .contact-info-container .section-title {
-  font-size: var(--font-size-section-title);
-}
-
-.contact-container .contact-info-container p {
-  color: var(--color-text-secondary);
 }
 
 .contact-container .spans-container {
