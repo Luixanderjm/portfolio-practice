@@ -39,6 +39,7 @@
   --color-nav-link: var(--color-white);
   --color-nav-link-desktop: #f8fafc;
   --color-white: #ffffff;
+  --color-black: #000000;
   --color-interactive: #111827;
   --color-nav-bg: var(--color-interactive);
   --color-interactive-secondary: #0f172a;
@@ -53,6 +54,7 @@
   --gradient-primary: linear-gradient(to bottom, #9fa2ff, #868af7);
   --color-hire-btn: var(--color-interactive-secondary);
   --color-hire-btn-bg: var(--gradient-primary);
+  --color-skill-card-bg: var(--color-surface);
   --header-overlay-bg:
     radial-gradient(ellipse at 38% 35%, rgba(110, 125, 70, 0.05), rgba(30, 75, 80, 0.04) 36%, transparent 58%),
     rgba(8, 9, 10, 0.75);
@@ -63,10 +65,19 @@
   --color-burger-header: var(--color-white);
   --color-burger-menu: #0f172a;
   --color-section-label: var(--color-primary);
+  --color-skill-brand: var(--color-primary);
+  --color-skill-card-title-bg: var(--color-white);
+  --color-skill-card-text: var(--color-text-secondary);
+  --color-card-project-text: var(--color-white);
+  --color-card-project-title: var(--color-white);
+  --border-skill-card: none;
+  --border-tech-list: none;
+  --color-tech-list-text: #b2b3f2;
+  --color-tech-list-bg: #42447b;
 }
 
 :root.light-theme {
-  --header-overlay-bg: linear-gradient(to right, rgba(30, 41, 59, 0.96), rgba(67, 56, 202, 0.9));
+  --header-overlay-bg: linear-gradient(to right, rgba(30, 41, 59, 0.92), rgba(55, 48, 163, 0.88));
   --border-divider: thin solid rgba(255, 255, 255, 0.14);
   --color-hire-btn-bg: #a5b4fc;
   --color-hire-btn: #111827;
@@ -88,6 +99,16 @@
   --color-theme-switch-track-border: rgba(15, 23, 42, 0.28);
   --color-theme-switch-thumb-bg: #8186f8;
   --color-section-label: #5b5fcf;
+  --color-skill-card-bg: #f8f8ff;
+  --color-skill-brand: #5b5fcf;
+  --color-skill-card-title-bg: var(--color-black);
+  --color-skill-card-text: var(--color-paragraph-text);
+  --color-card-project-text: var(--color-paragraph-text);
+  --color-card-project-title: var(--color-black);
+  --color-tech-list-text: #4f46e5;
+  --color-tech-list-bg: rgba(99, 102, 241, 0.12);
+  --border-skill-card: 1px solid rgba(15, 23, 42, 0.08);
+  --border-tech-list: 1px solid rgba(99, 102, 241, 0.22);
 }
 
 :root.light-theme .theme-toggle-circle {
@@ -96,6 +117,14 @@
 
 :root.light-theme .menu-toggle.active span {
   background-color: var(--color-burger-menu);
+}
+
+@media (width >= 64rem) {
+  :root.light-theme {
+    --color-theme-switch-track-bg: rgba(255, 255, 255, 0.08);
+    --color-theme-switch-track-border: rgba(255, 255, 255, 0.28);
+    --color-theme-switch-thumb-bg: #aeb6ff;
+  }
 }
 
 /* ********** Reset ********** */
@@ -820,9 +849,10 @@ section {
   justify-content: center;
   gap: 1.1rem;
   padding: 2.3rem 1.8rem;
-  background: var(--color-surface);
+  background: var(--color-skill-card-bg);
   font-size: 0.75rem;
   outline: thin solid transparent;
+  border: var(--border-skill-card);
   border-radius: var(--radius-base);
   transition: outline 0.3s ease;
 }
@@ -833,11 +863,12 @@ section {
 
 .skill-cards-container h3 {
   font-size: 1.25rem;
+  color: var(--color-skill-card-title-bg);
 }
 
 .skill-cards-container p {
   margin-top: -0.8rem;
-  color: var(--color-text-secondary);
+  color: var(--color-skill-card-text);
 }
 
 .skill-cards-container span i {
@@ -847,6 +878,10 @@ section {
 
 .skill-cards-container .skill-card:hover span i {
   transform: scale(1.1);
+}
+
+.skill-card span {
+  color: var(--color-skill-brand);
 }
 
 @media (width >= 64rem) {
@@ -897,11 +932,12 @@ section {
 
 .cards-container .tech-list span {
   padding: 0.3rem 0.75rem;
+  border: var(--border-tech-list);
   border-radius: 20px;
   font-size: 0.7rem;
   font-weight: bold;
-  color: #b2b3f2;
-  background: #42447b;
+  color: var(--color-tech-list-text);
+  background: var(--color-tech-list-bg);
   transition: opacity 0.3s ease;
 }
 
@@ -957,6 +993,14 @@ section {
 .cards-container .card .links-container a:last-child {
   background: #00000098;
   color: #fff;
+}
+
+.card p {
+  color: var(--color-card-project-text);
+}
+
+.card h3 {
+  color: var(--color-card-project-title);
 }
 
 @media (width >= 64rem) {
