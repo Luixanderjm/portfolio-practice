@@ -70,10 +70,14 @@
   --color-skill-card-text: var(--color-text-secondary);
   --color-card-project-text: var(--color-white);
   --color-card-project-title: var(--color-white);
+  --color-contact-info-logo: var(--color-primary);
+  --color-contact-info-text: var(--color-white);
+  --color-contact-info-bg: var(--color-surface);
   --border-skill-card: none;
   --border-tech-list: none;
   --color-tech-list-text: #b2b3f2;
   --color-tech-list-bg: #42447b;
+  --contact-info-icon-border: none;
 }
 
 :root.light-theme {
@@ -92,7 +96,7 @@
   --color-btn-secondary-border: rgba(79, 70, 229, 0.35);
   --color-nav-bg: #f3f4ff;
   --color-nav-link: #0f172a;
-  --color-menu-border: rgba(15, 23, 42, 0.09);
+  --color-menu-border: rgba(15, 23, 42, 0.12);
   --color-link-bg-hover: rgba(129, 134, 248, 0.06);
   --color-theme-control-text: #0f172a;
   --color-theme-switch-track-bg: rgba(15, 23, 42, 0.08);
@@ -109,6 +113,10 @@
   --color-tech-list-bg: rgba(99, 102, 241, 0.12);
   --border-skill-card: 1px solid rgba(15, 23, 42, 0.08);
   --border-tech-list: 1px solid rgba(99, 102, 241, 0.22);
+  --color-contact-info-text: var(--color-black);
+  --color-contact-info-logo: #6366f1;
+  --color-contact-info-bg: #eef2ff;
+  --contact-info-icon-border: 1px solid rgba(99, 102, 241, 0.18);
 }
 
 :root.light-theme .theme-toggle-circle {
@@ -314,7 +322,8 @@ section {
 
 .theme-control {
   position: absolute;
-  bottom: 2.5rem;
+  top: 1.2rem;
+  right: 3.5rem;
   display: inline-flex;
   align-items: center;
   gap: 1rem;
@@ -1046,13 +1055,15 @@ section {
   min-width: 3rem;
   margin-right: 0.5rem;
   padding: 1rem 0;
-  background: var(--color-surface);
+  background: var(--color-contact-info-bg);
   border-radius: var(--radius-base);
   text-align: center;
+  color: var(--color-contact-info-logo);
+  border: var(--contact-info-icon-border);
 }
 
 .contact-info-container b {
-  color: var(--color-white);
+  color: var(--color-contact-info-text);
 }
 
 @media (width >= 48rem) {
