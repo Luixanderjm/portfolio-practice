@@ -36,9 +36,9 @@
   --color-mark-text: var(--color-primary);
   --color-link-alpha: #fff9;
   --color-link-bg-hover: #60a5fa;
-  --color-nav-link: var(--color-white);
-  --color-nav-link-desktop: #f8fafc;
+  --color-nav-link-desktop: var(--color-white);
   --color-white: #ffffff;
+  --color-nav-link: var(--color-white);
   --color-black: #000000;
   --color-interactive: #111827;
   --color-nav-bg: var(--color-interactive);
@@ -66,18 +66,18 @@
   --color-burger-menu: #0f172a;
   --color-section-label: var(--color-primary);
   --color-skill-brand: var(--color-primary);
-  --color-skill-card-title-bg: var(--color-white);
+  --color-skill-card-title-text: var(--color-white);
   --color-skill-card-text: var(--color-text-secondary);
   --color-card-project-text: var(--color-white);
   --color-card-project-title: var(--color-white);
   --color-contact-info-logo: var(--color-primary);
   --color-contact-info-text: var(--color-white);
   --color-contact-info-bg: var(--color-surface);
-  --border-skill-card: none;
-  --border-tech-list: none;
+  --border-skill-card: 1px solid transparent;
+  --border-tech-list: 1px solid transparent;
   --color-tech-list-text: #b2b3f2;
   --color-tech-list-bg: #42447b;
-  --contact-info-icon-border: none;
+  --contact-info-icon-border: 1px solid transparent;
   --color-contact-form-bg: var(--color-surface);
   --contact-form-border: 1px solid transparent;
   --contact-form-input-border: 1px solid transparent;
@@ -88,6 +88,10 @@
   --color-form-button-text: #0d0096;
   --color-placeholder-focus-border: var(--color-primary);
   --caret-color: var(--color-white);
+  --color-footer-info-text: var(--color-text-secondary);
+  --color-footer-bg: transparent;
+  --transition-bg-color: background 0.1s ease-in-out;
+  --transition-text-color: color 0.1s ease-in-out;
 }
 
 :root.light-theme {
@@ -115,15 +119,15 @@
   --color-section-label: #5b5fcf;
   --color-skill-card-bg: #f8f8ff;
   --color-skill-brand: #5b5fcf;
-  --color-skill-card-title-bg: var(--color-black);
+  --color-skill-card-title-text: #0f172a;
   --color-skill-card-text: var(--color-paragraph-text);
   --color-card-project-text: var(--color-paragraph-text);
-  --color-card-project-title: var(--color-black);
+  --color-card-project-title: #0f172a;
   --color-tech-list-text: #4f46e5;
   --color-tech-list-bg: rgba(99, 102, 241, 0.12);
   --border-skill-card: 1px solid rgba(15, 23, 42, 0.08);
   --border-tech-list: 1px solid rgba(99, 102, 241, 0.22);
-  --color-contact-info-text: var(--color-black);
+  --color-contact-info-text: #1e293b;
   --color-contact-info-logo: #6366f1;
   --color-contact-info-bg: #eef2ff;
   --contact-info-icon-border: 1px solid rgba(99, 102, 241, 0.18);
@@ -139,6 +143,9 @@
   --contact-form-input-border: 1px solid rgba(15, 23, 42, 0.14);
   --color-placeholder-focus-border: #8186f8;
   --caret-color: #0f172a;
+  --color-footer-info-text: var(--color-white);
+  --color-footer-bg: var(--header-overlay-bg);
+  --color-nav-link-desktop: #f8fafc;
 }
 
 :root.light-theme .theme-toggle-circle {
@@ -147,6 +154,14 @@
 
 :root.light-theme .menu-toggle.active span {
   background-color: var(--color-burger-menu);
+}
+
+:root.light-theme .header::before {
+  opacity: 0;
+}
+
+:root.light-theme .header::after {
+  opacity: 1;
 }
 
 @media (width >= 64rem) {
@@ -180,6 +195,7 @@ body {
   min-height: var(--container-min-height);
   color: var(--color-white);
   background: var(--color-bg-main);
+  transition: var(--transition-bg-color);
 }
 
 main {
@@ -189,7 +205,9 @@ main {
 a {
   color: var(--color-white);
   text-decoration: none;
-  transition: all 0.5s ease-out;
+  transition:
+    all 0.5s ease-out,
+    var(--transition-text-color);
 }
 
 a:hover {
@@ -223,6 +241,7 @@ p {
 section {
   padding: var(--padding-section-mobile);
   scroll-margin-top: 2.5rem;
+  transition: var(--transition-bg-color);
 }
 
 @media (width >= 64rem) {
@@ -302,7 +321,8 @@ section {
   background: var(--color-nav-bg);
   transition:
     transform 0.3s ease-out,
-    opacity 0.3s ease-out;
+    opacity 0.3s ease-out,
+    background 0.2s ease-in-out;
   transform: translateX(-100%);
   opacity: 0;
 }
@@ -422,11 +442,13 @@ section {
   font-size: clamp(2.5rem, 8vw, 4.9rem);
   color: var(--color-text-primary);
   line-height: 1;
+  transition: var(--transition-text-color);
 }
 
 .mark-text {
   color: var(--color-mark-text);
   font-style: italic;
+  transition: var(--transition-text-color);
 }
 
 .hero-section {
@@ -710,7 +732,7 @@ section {
   border-bottom: var(--border-divider);
 }
 
-.header::before {
+/* .header::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -718,6 +740,28 @@ section {
   backdrop-filter: var(--nav-filter);
   background: var(--header-overlay-bg);
   pointer-events: none;
+  transition: background 11s ease-in-out;
+} */
+
+.header::before,
+.header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  backdrop-filter: var(--nav-filter);
+  transition: opacity 0.1s ease-in-out;
+}
+
+.header::before {
+  background: var(--header-overlay-bg);
+  opacity: 1;
+}
+
+.header::after {
+  background: var(--header-overlay-bg);
+  opacity: 0;
 }
 
 .header-container {
@@ -746,8 +790,9 @@ section {
 .footer {
   z-index: 997;
   width: 100%;
-  padding: 1rem;
+  padding: 0.5rem;
   border-top: var(--border-divider);
+  background: var(--color-footer-bg);
 }
 
 .footer-info-container {
@@ -755,7 +800,7 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: var(--color-text-secondary);
+  color: var(--color-footer-info-text);
 }
 
 .footer-work-social-media {
@@ -883,11 +928,11 @@ section {
   justify-content: center;
   gap: 1.1rem;
   padding: 2.3rem 1.8rem;
-  background: var(--color-skill-card-bg);
-  font-size: 0.75rem;
   outline: thin solid transparent;
   border: var(--border-skill-card);
   border-radius: var(--radius-base);
+  background: var(--color-skill-card-bg);
+  font-size: 0.75rem;
   transition: outline 0.3s ease;
 }
 
@@ -897,7 +942,7 @@ section {
 
 .skill-cards-container h3 {
   font-size: 1.25rem;
-  color: var(--color-skill-card-title-bg);
+  color: var(--color-skill-card-title-text);
 }
 
 .skill-cards-container p {
@@ -1081,10 +1126,10 @@ section {
   margin-right: 0.5rem;
   padding: 1rem 0;
   background: var(--color-contact-info-bg);
+  border: var(--contact-info-icon-border);
   border-radius: var(--radius-base);
   text-align: center;
   color: var(--color-contact-info-logo);
-  border: var(--contact-info-icon-border);
 }
 
 .contact-info-container b {
