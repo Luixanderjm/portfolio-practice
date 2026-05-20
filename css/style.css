@@ -7,10 +7,9 @@
   --font-family: "Plus Jakarta Sans", sans-serif;
   --font-size-header-logo: 1.2rem;
   --font-size-section-title: clamp(2rem, 6vw, 2.9rem);
-
   --padding-menu-mobile: 2.5rem;
   --padding-btn: 1rem 1.25rem;
-  --padding-btn-hire: 0.75rem 1.25rem;
+  --padding-btn-hire: 0.75rem 1.4rem;
   --padding-menu-nav: 0.15rem 0;
   --padding-section-mobile: 0 1.5rem;
   --padding-header-container-mobile: 1rem;
@@ -23,7 +22,6 @@
   --radius-base: 8px;
   --radius-card: 12px;
   --border-divider: thin solid #ffffff14;
-  --color-nav-bg: #0a0a0acc;
   --nav-filter: blur(12px);
 
   --color-surface: #171717;
@@ -71,7 +69,7 @@
   --color-card-project-text: var(--color-white);
   --color-card-project-title: var(--color-white);
   --color-contact-info-logo: var(--color-primary);
-  --color-contact-info-text: var(--color-white);
+  --color-contact-info-text: #e2e8f0;
   --color-contact-info-bg: var(--color-surface);
   --border-skill-card: 1px solid transparent;
   --border-tech-list: 1px solid transparent;
@@ -90,8 +88,9 @@
   --caret-color: var(--color-white);
   --color-footer-info-text: var(--color-text-secondary);
   --color-footer-bg: transparent;
-  --transition-bg-color: background 0.1s ease-in-out;
-  --transition-text-color: color 0.1s ease-in-out;
+  --transition-bg-color: background 0.2s ease-in-out;
+  --transition-text-color: color 0.2s ease-in-out;
+  --transition-border: border 0.2s ease-in-out;
 }
 
 :root.light-theme {
@@ -144,7 +143,7 @@
   --color-placeholder-focus-border: #8186f8;
   --caret-color: #0f172a;
   --color-footer-info-text: var(--color-white);
-  --color-footer-bg: var(--header-overlay-bg);
+  --color-footer-bg: #37385f;
   --color-nav-link-desktop: #f8fafc;
 }
 
@@ -200,6 +199,7 @@ body {
 
 main {
   flex-grow: 1;
+  padding-top: 5rem;
 }
 
 a {
@@ -255,16 +255,19 @@ section {
 .section-title {
   font-size: var(--font-size-section-title);
   color: var(--color-text-primary);
+  transition: var(--transition-text-color);
 }
 
 .section-text {
   color: var(--color-paragraph-text);
   font-size: 1rem;
+  transition: var(--transition-text-color);
 }
 
 .section-text-label {
   color: var(--color-section-label);
   font-weight: bold;
+  transition: var(--transition-text-color);
 }
 
 /* ********** Components ********** */
@@ -359,7 +362,9 @@ section {
   color: var(--color-hire-btn);
   background: var(--color-hire-btn-bg);
   border-radius: var(--radius-base);
-  transition: opacity 0.03s ease;
+  transition:
+    opacity 0.03s ease,
+    var(--transition-text-color);
 }
 
 .theme-control {
@@ -474,9 +479,10 @@ section {
 }
 
 .hero-p {
-  color: var(--color-paragraph-text);
   width: 100%;
   margin-block: 1.5rem;
+  color: var(--color-paragraph-text);
+  transition: var(--transition-text-color);
 }
 
 .hero-btn-container {
@@ -502,6 +508,10 @@ section {
   border-radius: var(--radius-base);
   color: var(--color-btn-primary-text);
   background: var(--color-btn-primary-bg);
+  transition:
+    var(--transition-bg-color),
+    var(--transition-text-color),
+    opacity 0.2s ease;
 }
 
 .hero-btn-container .view-work-btn:hover {
@@ -514,6 +524,10 @@ section {
   border-radius: var(--radius-base);
   color: var(--color-btn-secondary-text);
   background: transparent;
+  transition:
+    var(--transition-text-color),
+    var(--transition-border),
+    opacity 0.2s ease;
 }
 
 .hero-btn-container .get-in-touch-btn:hover {
@@ -567,9 +581,10 @@ section {
 .contact-form textarea:-webkit-autofill:hover,
 .contact-form textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--color-white);
-  caret-color: var(--color-white);
+  -webkit-text-fill-color: var(--color-contact-form-input-text);
+  caret-color: var(--caret-color);
   box-shadow: 0 0 0 1000px var(--color-placeholder-bg) inset;
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-placeholder-focus-border);
 }
 
 .contact-form {
@@ -584,6 +599,10 @@ section {
   border-radius: var(--radius-base);
   background: var(--color-contact-form-bg);
   box-shadow: var(--contact-form-box-shadow);
+  transition:
+    var(--transition-border),
+    var(--transition-bg-color),
+    box-shadow 0.2s ease-in-out;
 }
 
 .contact-form input,
@@ -595,7 +614,10 @@ section {
   font-size: 1rem;
   background: var(--color-placeholder-bg);
   color: var(--color-contact-form-input-text);
-  transition: outline 0.3s ease;
+  transition:
+    outline 0.3s ease,
+    var(--transition-border),
+    var(--transition-bg-color);
 }
 
 .contact-form input:invalid:not(:placeholder-shown) {
@@ -613,12 +635,14 @@ section {
   font-size: 0.85rem;
   font-weight: bold;
   color: var(--color-contact-form-label);
+  transition: var(--transition-text-color);
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
   font-size: 0.9rem;
   color: var(--color-placeholder-text);
+  transition: var(--transition-text-color);
 }
 
 .contact-form input:focus,
@@ -639,7 +663,10 @@ section {
   color: var(--color-form-button-text);
   background: var(--color-form-button-bg);
   outline: none;
-  transition: opacity 0.3s ease;
+
+  transition:
+    var(--transition-text-color),
+    opacity 0.3s ease;
 }
 
 .contact-form button:hover {
@@ -724,12 +751,14 @@ section {
 /* ********** Site Styles ********** */
 
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 998;
+  width: 100%;
   display: flex;
   justify-content: center;
   border-bottom: var(--border-divider);
+  /* background: var(--header-overlay-bg); */
 }
 
 /* .header::before {
@@ -751,7 +780,7 @@ section {
   z-index: 0;
   pointer-events: none;
   backdrop-filter: var(--nav-filter);
-  transition: opacity 0.1s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .header::before {
@@ -793,6 +822,7 @@ section {
   padding: 0.5rem;
   border-top: var(--border-divider);
   background: var(--color-footer-bg);
+  transition: var(--transition-bg-color);
 }
 
 .footer-info-container {
@@ -801,6 +831,7 @@ section {
   justify-content: center;
   align-items: center;
   color: var(--color-footer-info-text);
+  transition: var(--transition-text-color);
 }
 
 .footer-work-social-media {
@@ -933,7 +964,9 @@ section {
   border-radius: var(--radius-base);
   background: var(--color-skill-card-bg);
   font-size: 0.75rem;
-  transition: outline 0.3s ease;
+  transition:
+    outline 0.3s ease,
+    var(--transition-bg-color);
 }
 
 .skill-cards-container .skill-card:hover {
@@ -943,16 +976,19 @@ section {
 .skill-cards-container h3 {
   font-size: 1.25rem;
   color: var(--color-skill-card-title-text);
+  transition: var(--transition-text-color);
 }
 
 .skill-cards-container p {
   margin-top: -0.8rem;
   color: var(--color-skill-card-text);
+  transition: var(--transition-text-color);
 }
 
 .skill-cards-container span i {
   font-size: 1.25rem;
   transition: transform 0.3s ease;
+  transition: var(--transition-text-color);
 }
 
 .skill-cards-container .skill-card:hover span i {
@@ -1017,7 +1053,10 @@ section {
   font-weight: bold;
   color: var(--color-tech-list-text);
   background: var(--color-tech-list-bg);
-  transition: opacity 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    var(--transition-bg-color),
+    var(--transition-text-color);
 }
 
 .cards-container .tech-list span:hover {
@@ -1074,12 +1113,14 @@ section {
   color: #fff;
 }
 
-.card p {
-  color: var(--color-card-project-text);
+.card > h3 {
+  color: var(--color-card-project-title);
+  transition: var(--transition-text-color);
 }
 
-.card h3 {
-  color: var(--color-card-project-title);
+.card > p {
+  color: var(--color-card-project-text);
+  transition: var(--transition-text-color);
 }
 
 @media (width >= 64rem) {
@@ -1125,15 +1166,17 @@ section {
   min-width: 3rem;
   margin-right: 0.5rem;
   padding: 1rem 0;
-  background: var(--color-contact-info-bg);
   border: var(--contact-info-icon-border);
   border-radius: var(--radius-base);
-  text-align: center;
+  background: var(--color-contact-info-bg);
   color: var(--color-contact-info-logo);
+  text-align: center;
+  transition: var(--transition-border), var(--transition-bg-color), var(--transition-text-color);
 }
 
 .contact-info-container b {
   color: var(--color-contact-info-text);
+  transition: var(--transition-bg-color);
 }
 
 @media (width >= 48rem) {
