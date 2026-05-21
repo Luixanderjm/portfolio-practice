@@ -10,14 +10,15 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" href="assets/icons/favicon.ico" />
     <script src="https://kit.fontawesome.com/849d90e527.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body id="top">
     <header class="header">
       <div class="header-container max-width">
-        <a href="#home" rel="noreferer" class="logo">LuixDev</a>
-        <button class="menu-toggle" aria-label="Open Menu" aria-expanded="false">
+        <a href="#top" class="logo">LuixDev</a>
+        <button class="menu-toggle" type="button" aria-label="Open Menu" aria-expanded="false">
           <span class="line line-1"></span>
           <span class="line line-2"></span>
           <span class="line line-3"></span>
@@ -29,11 +30,11 @@
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
           <div class="theme-control">
-            <button id="theme-toggle" class="theme-toggle">
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode">
               <span class="theme-toggle-circle"></span>
             </button>
           </div>
-          <a class="hire-btn" href="#"><span>Hire Me</span></a>
+          <a class="hire-btn" href="#contact"><span>Hire Me</span></a>
         </nav>
       </div>
     </header>
@@ -43,11 +44,11 @@
           <h1 class="main-title text-to-left">Building Digital <span class="mark-text">Experiences</span> with Code</h1>
           <p class="hero-p text-to-left">
             Fullstack Developer passionate about clean code and user-centric design. I curate digital environments that
-            blend technical precision with aesthetic authohrity.
+            blend technical precision with aesthetic authority.
           </p>
           <div class="hero-btn-container">
-            <a href="#" class="view-work-btn">View My Work <i class="fa-solid fa-arrow-right"></i></a>
-            <a href="#" class="get-in-touch-btn">Get in Touch</a>
+            <a href="#projects" class="view-work-btn">View My Work <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#contact" class="get-in-touch-btn">Get in Touch</a>
           </div>
         </div>
       </section>
@@ -250,9 +251,13 @@
               placeholder="Tell me about your project..."
               required
             ></textarea>
+            <div class="form-field-hidden" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
             <button type="submit">Send Message</button>
             <div class="contact-form-loader none">
-              <img src="assets/svg/oval.svg" alt="Loanding" />
+              <img src="assets/svg/oval.svg" alt="Loading" />
             </div>
             <div class="contact-form-response none">
               <p>Your message was sent successfully.</p>
@@ -263,7 +268,7 @@
     </main>
     <footer class="footer">
       <div class="footer-info-container max-width">
-        <p class="fooster-p"><small>© 2026 LuixDev. All rights reserved.</small></p>
+        <p><small>© 2026 LuixDev. All rights reserved.</small></p>
         <ul class="footer-work-social-media">
           <li>
             <a href=""><small>LINKEDIN</small></a>

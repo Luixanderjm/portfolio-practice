@@ -12,6 +12,16 @@ header("Content-Type: application/json");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
+  $website = trim($_POST["website"] ?? "");
+
+  if (!empty($website)) {
+    echo json_encode([
+      "success" => true,
+      "message" => "The email was submitted successfully"
+    ]);
+    exit;
+  }
+
   $name = trim($_POST["name"] ?? "");
   $email = trim($_POST["email"] ?? "");
   $message = trim($_POST["details"] ?? "");

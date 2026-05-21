@@ -21,8 +21,6 @@
   --min-width-nav-cta-content: 12.5rem;
   --radius-base: 8px;
   --radius-card: 12px;
-  --border-divider: thin solid #ffffff14;
-  --nav-filter: blur(12px);
 
   --color-surface: #171717;
   --color-bg-main: #0a0a0a;
@@ -53,9 +51,6 @@
   --color-hire-btn: var(--color-interactive-secondary);
   --color-hire-btn-bg: var(--gradient-primary);
   --color-skill-card-bg: var(--color-surface);
-  --header-overlay-bg:
-    radial-gradient(ellipse at 38% 35%, rgba(110, 125, 70, 0.05), rgba(30, 75, 80, 0.04) 36%, transparent 58%),
-    rgba(8, 9, 10, 0.75);
   --color-theme-switch-track-bg: rgba(255, 255, 255, 0.16);
   --color-theme-switch-track-border: rgba(255, 255, 255, 0.28);
   --color-theme-switch-thumb-bg: #c7d2fe;
@@ -71,31 +66,34 @@
   --color-contact-info-logo: var(--color-primary);
   --color-contact-info-text: #e2e8f0;
   --color-contact-info-bg: var(--color-surface);
-  --border-skill-card: 1px solid transparent;
-  --border-tech-list: 1px solid transparent;
   --color-tech-list-text: #b2b3f2;
   --color-tech-list-bg: #42447b;
-  --contact-info-icon-border: 1px solid transparent;
   --color-contact-form-bg: var(--color-surface);
-  --contact-form-border: 1px solid transparent;
-  --contact-form-input-border: 1px solid transparent;
-  --contact-form-box-shadow: none;
   --color-contact-form-input-text: var(--color-white);
   --color-contact-form-label: var(--color-text-secondary);
   --color-form-button-bg: var(--gradient-primary);
   --color-form-button-text: #0d0096;
   --color-placeholder-focus-border: var(--color-primary);
-  --caret-color: var(--color-white);
   --color-footer-info-text: var(--color-text-secondary);
   --color-footer-bg: transparent;
-  --transition-bg-color: background 0.2s ease-in-out;
+  --transition-bg-color: background-color 0.2s ease-in-out;
   --transition-text-color: color 0.2s ease-in-out;
-  --transition-border: border 0.2s ease-in-out;
+  --transition-border: border-color 0.2s ease-in-out;
+  --contact-form-border: 1px solid transparent;
+  --contact-form-input-border: 1px solid transparent;
+  --contact-form-box-shadow: none;
+  --contact-info-icon-border: 1px solid transparent;
+  --header-overlay-bg:
+    radial-gradient(ellipse at 38% 35%, rgba(110, 125, 70, 0.05), rgba(30, 75, 80, 0.04) 36%, transparent 58%),
+    rgba(8, 9, 10, 0.75);
+  --nav-filter: blur(12px);
+  --border-skill-card: 1px solid transparent;
+  --border-tech-list: 1px solid transparent;
+  --border-divider: thin solid #ffffff14;
+  --caret-color: var(--color-white);
 }
 
 :root.light-theme {
-  --header-overlay-bg: linear-gradient(to right, rgba(30, 41, 59, 0.92), rgba(55, 48, 163, 0.88));
-  --border-divider: thin solid rgba(255, 255, 255, 0.14);
   --color-hire-btn-bg: #a5b4fc;
   --color-hire-btn: #111827;
   --color-bg-main: #f8fafc;
@@ -124,27 +122,29 @@
   --color-card-project-title: #0f172a;
   --color-tech-list-text: #4f46e5;
   --color-tech-list-bg: rgba(99, 102, 241, 0.12);
-  --border-skill-card: 1px solid rgba(15, 23, 42, 0.08);
-  --border-tech-list: 1px solid rgba(99, 102, 241, 0.22);
   --color-contact-info-text: #1e293b;
   --color-contact-info-logo: #6366f1;
   --color-contact-info-bg: #eef2ff;
-  --contact-info-icon-border: 1px solid rgba(99, 102, 241, 0.18);
   --color-contact-form-bg: var(--color-white);
-  --contact-form-box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
   --color-placeholder-bg: #f8fafc;
   --color-contact-form-input-text: #0f172a;
   --color-contact-form-label: #1e293b;
   --color-placeholder-text: #64748b;
   --color-form-button-bg: linear-gradient(to bottom, #b8c0ff, #9fa8ff);
   --color-form-button-text: #0f172a;
-  --contact-form-border: 1px solid rgba(15, 23, 42, 0.1);
-  --contact-form-input-border: 1px solid rgba(15, 23, 42, 0.14);
   --color-placeholder-focus-border: #8186f8;
   --caret-color: #0f172a;
   --color-footer-info-text: var(--color-white);
   --color-footer-bg: #37385f;
   --color-nav-link-desktop: #f8fafc;
+  --contact-form-border: 1px solid rgba(15, 23, 42, 0.1);
+  --contact-form-input-border: 1px solid rgba(15, 23, 42, 0.14);
+  --contact-info-icon-border: 1px solid rgba(99, 102, 241, 0.18);
+  --contact-form-box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+  --header-overlay-bg: linear-gradient(to right, rgba(30, 41, 59, 0.92), rgba(55, 48, 163, 0.88));
+  --border-skill-card: 1px solid rgba(15, 23, 42, 0.08);
+  --border-tech-list: 1px solid rgba(99, 102, 241, 0.22);
+  --border-divider: thin solid rgba(255, 255, 255, 0.14);
 }
 
 :root.light-theme .theme-toggle-circle {
@@ -692,6 +692,7 @@ section {
 
 .contact-form-loader img {
   width: 3.5rem;
+  animation: opacity-animation 0.3s ease 1 both;
 }
 
 .contact-form-response {
@@ -700,6 +701,7 @@ section {
   font-size: 1.25rem;
   font-weight: 500;
   color: #8b8cf6;
+  animation: opacity-animation 0.3s ease 1 both;
 }
 
 .contact-form-response p {
@@ -719,6 +721,13 @@ section {
 .contact-form span.active {
   display: block;
   animation: opacity-animation 0.3s ease 1 both;
+}
+
+.form-field-hidden {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ********** Utilities ********** */
