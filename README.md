@@ -7,7 +7,7 @@ This is a practice project where I am developing my personal portfolio while lea
 - HTML5
 - CSS3
 - JavaScript (Vanilla)
-- PHP (if applicable in the project)
+- PHP / PHPMailer
 - Git & GitHub
 
 ## 🎯 Project goal
@@ -21,26 +21,28 @@ This is a practice project where I am developing my personal portfolio while lea
 
 /assets → images, icons, resources  
 /css → styles  
-/js → JavaScript logic  
+/js → JavaScript logic
+/php → contact form backend  
 /index.html → main page
 
 ## 📌 Project status
 
-🚧 Continuously in development
+🚧 Completed practice project — open to future improvements
 
 ## 🧠 What I’m learning
 
-- Git workflow (add, commit, push)
-- Organizing real projects
-- Frontend best practices
-- Version control usage
+- Git workflow and branching
+- Responsive UI development
+- JavaScript DOM and async logic
+- Theme switching with CSS custom properties
+- Basic backend form handling with PHP
 
 ## 📂 How to run the project
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/youruser/portfolio-practice.git
+git clone https://github.com/Luixanderjm/portfolio-practice
 ```
 
 2. Open the project in your browser:
