@@ -19,11 +19,11 @@ This is a practice project where I am developing my personal portfolio while lea
 
 ## 📁 Project structure
 
-/assets → images, icons, resources
-/css → styles
-/js → JavaScript logic
-/php → contact form backend
-/index.html → main page
+- `/assets` → images, icons, favicon and resources
+- `/css` → styles
+- `/js` → JavaScript logic
+- `/php` → contact form backend
+- `/index.html` → main page
 
 ## 📌 Project status
 
