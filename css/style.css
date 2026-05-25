@@ -996,8 +996,9 @@ section {
 
 .skill-cards-container span i {
   font-size: 1.25rem;
-  transition: transform 0.3s ease;
-  transition: var(--transition-text-color);
+  transition:
+    var(--transition-text-color),
+    transform 0.3s ease;
 }
 
 .skill-cards-container .skill-card:hover span i {
