@@ -1151,7 +1151,7 @@ section {
 
 .contact-container {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
 }
 
 .contact-container .contact-info-container {
