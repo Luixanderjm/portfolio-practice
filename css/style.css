@@ -418,6 +418,7 @@ section {
   .nav-menu a {
     padding: 0;
     color: var(--color-nav-link-desktop);
+    border-top: none;
   }
 
   .nav-menu a:hover {
